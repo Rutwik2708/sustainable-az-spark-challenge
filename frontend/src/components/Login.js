@@ -18,7 +18,7 @@ const Login = ({ onLoginSuccess }) => {
         // Define Axios configuration with headers
         const config = {
             method: 'get',  // If the API requires GET, keep it as GET
-            url: 'http://localhost:8080/login',
+            url: 'http://ec2-54-90-131-236.compute-1.amazonaws.com:8080/login',
             headers: { 
                 'Content-Type': 'application/json', 
                 'Authorization': `Basic ${encodedCredentials}`,  // Dynamically set the Basic Auth header
