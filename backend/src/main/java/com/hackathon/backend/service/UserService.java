@@ -9,19 +9,20 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
-//    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
-//    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-//        this.passwordEncoder = passwordEncoder;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public void saveUser(String username, String password, String role) {
+        if (userRepository.findByUsername(username).isPresent()) {
+            throw new IllegalArgumentException("Username already exists");
+        }
         UserData userData = new UserData();
         userData.setUsername(username);
-        userData.setPassword(password);  // Encode the password
-//        userData.setPassword(passwordEncoder.encode(password));  // Encode the password
+        userData.setPassword(passwordEncoder.encode(password));  // Encode the password
         userData.setRole(role);
         userRepository.save(userData);
     }

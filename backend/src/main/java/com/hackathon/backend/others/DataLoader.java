@@ -13,8 +13,8 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     private UserRepository userRepository;
 
-//    @Autowired
-//    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public void run(String... args) throws Exception {
@@ -23,11 +23,10 @@ public class DataLoader implements CommandLineRunner {
             // Insert the default user
             UserData defaultUser = new UserData(
                     "admin",                            // default username
-                    "{noop}admin123",  // default password (encoded)
-                    "ADMIN"                        // default role
+                    passwordEncoder.encode("admin123"),
+                        "ADMIN"                        // default role
             );
             userRepository.save(defaultUser);
-            System.out.println("Default user created: admin/admin123");
         }
     }
 }

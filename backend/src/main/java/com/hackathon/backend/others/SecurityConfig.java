@@ -31,11 +31,15 @@ public class SecurityConfig implements WebMvcConfigurer {
                 .cors()  // Ensure Spring Security uses the CORS configuration
                 .and()
                 .authorizeRequests()
+                .requestMatchers("/h2-console/**","/api/create-user").permitAll() // Allow access to H2 Console
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginProcessingUrl("/login").permitAll()
                 .and()
                 .logout().permitAll();
+
+        // Disabling frame options to allow H2 Console access
+        http.headers().frameOptions().disable();
 
         return http.build();
     }
@@ -48,10 +52,10 @@ public class SecurityConfig implements WebMvcConfigurer {
 //                .build();
 //    }
 
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();  // Passwords will be encoded using BCrypt
-//    }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();  // Passwords will be encoded using BCrypt
+    }
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
