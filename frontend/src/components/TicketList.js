@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardContent, Typography, Box, Container } from '@mui/material';
-import { getAllTickets } from '../services/TicketService';
+import TicketService, { getAllTickets } from '../services/TicketService';
 
-const TicketList = () => {
-    // Sample ticket data
-    const tickets = getAllTickets().data;
+const TicketList = ({ username }) => {
+    const [tickets, setTickets] = useState([]);
+
+    useEffect(() => {
+        const fetchTickets = async () => {
+            try {
+                // Assuming `getAllTickets` is a function that fetches tickets for a specific user
+                const response = await TicketService.getTicketsByUsername(username);
+                setTickets(response.data);
+            } catch (error) {
+                console.error('Error fetching tickets:', error);
+            }
+        };
+
+        fetchTickets();
+    }, [username]);
 
     return (
         <Container maxWidth="md">
             <Typography variant="h4" component="h1" gutterBottom align="center" sx={{ mb: 3 }}>
-                Tickets
+                Tickets for {username}
             </Typography>
             {tickets.map(ticket => (
                 <Card key={ticket.id} sx={{ mb: 3, borderRadius: 2, boxShadow: 3 }}>

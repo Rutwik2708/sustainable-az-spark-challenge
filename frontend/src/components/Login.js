@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Card, CardContent, Typography, TextField, Button, Alert, Box, Container, Link } from '@mui/material';
+import Userservice from '../services/UserService';
 
 const Login = ({ onLoginSuccess }) => {
     const [username, setUsername] = useState('');
@@ -12,31 +13,24 @@ const Login = ({ onLoginSuccess }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Create the Authorization header dynamically using Base64 encoding
-        const encodedCredentials = btoa(`${username}:${password}`);
-
-        // Define Axios configuration with headers
-        const config = {
-            method: 'get',  // If the API requires GET, keep it as GET
-            url: 'http://ec2-54-90-131-236.compute-1.amazonaws.com:8080/login',
-            headers: { 
-                'Content-Type': 'application/json', 
-                'Authorization': `Basic ${encodedCredentials}`,  // Dynamically set the Basic Auth header
-            },
-        };
-
         try {
-            // Send login request to the backend API
-            const response = await axios.request(config);
-            
-            // If login is successful, update the parent with login success and redirect
+            const response = await Userservice.login({
+                username,
+                password
+            });
+
             if (response.status === 200) {
-                onLoginSuccess();
+                onLoginSuccess(username); // Pass the username to the parent component
                 setMessage('Login successful!');
-                navigate('/tickets');
+                if (response.data === 'Mining Corporation') {
+
+                } else if (response.data === 'Govt Authorities') {
+
+                } else {
+                    navigate('/tickets');
+                }
             }
         } catch (error) {
-            // If login failed (e.g., 401 from the backend), show error message
             setMessage('Invalid credentials. Please try again.');
         }
     };

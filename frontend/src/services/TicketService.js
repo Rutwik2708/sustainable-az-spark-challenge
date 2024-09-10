@@ -1,44 +1,56 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api/tickets';
+const API_BASE_URL = 'http://ec2-54-90-131-236.compute-1.amazonaws.com:8080';
 
-const getAllTickets = () => {
-    var response = {
-        data : [
-            {
-                title: "title",
-                description: "description",
-                status: "status"
-            },
-            {
-                title: "title",
-                description: "description",
-                status: "status"
-            },
-            {
-                title: "title",
-                description: "description",
-                status: "status"
-            }
-        ]
-    };
-    return response;
-    // return axios.get(API_URL);
+const TicketService = {
+    async getTicketsByUsername(username) {
+        try {
+            const response = await axios.get(`${API_BASE_URL}/tickets`, {
+                params: { username },
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            // comment out after testing
+            var dummyRes = {
+                data : [
+                    {
+                        ticket: 'ticket1',
+                        description: 'description1',
+                        status: 'status1',
+                    },
+                    {
+                        ticket: 'ticket1',
+                        description: 'description1',
+                        status: 'status1',
+                    },
+                    {
+                        ticket: 'ticket1',
+                        description: 'description1',
+                        status: 'status1',
+                    }
+                ]
+            };
+            return dummyRes;
+            // return response.data; // Return the ticket data
+        } catch (error) {
+            console.error('Error fetching tickets:', error);
+            throw error; // Rethrow the error to handle it in the component
+        }
+    },
+
+    async createTicket(ticket) {
+
+    },
+
+    async updateTicketStatus(ticketId, status) {
+
+    },
+
+    async closeTicket(ticketId) {
+
+    }
 };
 
-const createTicket = (ticket) => {
-    return "";
-    // return axios.post(API_URL, ticket);
-};
-
-const updateTicket = (id, ticket) => {
-    return "";
-    // return axios.put(`${API_URL}/${id}`, ticket);
-};
-
-const deleteTicket = (id) => {
-    return "";
-    // return axios.delete(`${API_URL}/${id}`);
-};
-
-export { getAllTickets, createTicket, updateTicket, deleteTicket };
+export default TicketService;
