@@ -12,20 +12,17 @@ const Login = ({ onLoginSuccess }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Define Axios configuration
+        // Create the Authorization header dynamically using Base64 encoding
+        const encodedCredentials = btoa(`${username}:${password}`);
+
+        // Define Axios configuration with headers
         const config = {
-            method: 'post',
-            maxBodyLength: Infinity,
-            url: 'http://ec2-54-90-131-236.compute-1.amazonaws.com:8080/login',
+            method: 'get',  // If the API requires GET, keep it as GET
+            url: 'http://localhost:8080/login',
             headers: { 
                 'Content-Type': 'application/json', 
-                'Authorization': 'Basic YWRtaW4yOmFkbWluMTIz',  // Example authorization header, replace as needed
+                'Authorization': `Basic ${encodedCredentials}`,  // Dynamically set the Basic Auth header
             },
-            data: {
-                username,
-                password
-            },
-            withCredentials: true
         };
 
         try {
@@ -39,7 +36,7 @@ const Login = ({ onLoginSuccess }) => {
                 navigate('/tickets');
             }
         } catch (error) {
-            // If login failed (401 from the backend), show error message
+            // If login failed (e.g., 401 from the backend), show error message
             setMessage('Invalid credentials. Please try again.');
         }
     };
