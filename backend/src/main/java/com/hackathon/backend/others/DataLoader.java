@@ -24,7 +24,8 @@ public class DataLoader implements CommandLineRunner {
             UserData defaultUser = new UserData(
                     "admin",                            // default username
                     passwordEncoder.encode("admin123"),
-                        "ADMIN"                        // default role
+                    "ADMIN",                  // default role,
+                    "Admin User"
             );
             userRepository.save(defaultUser);
         }
