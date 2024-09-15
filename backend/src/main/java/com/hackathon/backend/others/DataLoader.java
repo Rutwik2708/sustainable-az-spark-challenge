@@ -34,7 +34,7 @@ public class DataLoader implements CommandLineRunner {
             userRepository.save(defaultUser);
         }
         // Load data from CSV
-        csvDataLoader.loadCsvData();
+//        csvDataLoader.loadCsvData();
     }
 }
 
