@@ -1,42 +1,98 @@
 import React, { useEffect, useState } from 'react';
-import { Card, CardContent, Typography, Box, Container } from '@mui/material';
-import TicketService, { getAllTickets } from '../services/TicketService';
+import { Card, CardContent, Typography, Box, Container, AppBar, Toolbar, Button } from '@mui/material';
+import TicketService from '../services/TicketService';
+import { useNavigate } from 'react-router-dom';
 
-const TicketList = ({ username }) => {
+const TicketList = ({ username, password }) => {
     const [tickets, setTickets] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchTickets = async () => {
             try {
-                // Assuming `getAllTickets` is a function that fetches tickets for a specific user
-                const response = await TicketService.getTicketsByUsername(username);
-                setTickets(response.data);
+                // Fetch tickets by username
+                const response = await TicketService.getTicketsByUsername(username, password);
+                if (response != undefined)
+                    setTickets(response);
             } catch (error) {
                 console.error('Error fetching tickets:', error);
             }
         };
 
-        fetchTickets();
+        if (username) {
+            fetchTickets();
+        }
     }, [username]);
 
+    const handleCreateTicket = () => {
+        // Logic for navigating to Create Ticket page/form
+        navigate('/create-ticket'); // Assuming you have a route for creating a ticket
+    };
+
+    const handleLogout = () => {
+        navigate('/logout')
+    };
+
     return (
-        <Container maxWidth="md">
-            <Typography variant="h4" component="h1" gutterBottom align="center" sx={{ mb: 3 }}>
-                Tickets for {username}
-            </Typography>
-            {tickets.map(ticket => (
-                <Card key={ticket.id} sx={{ mb: 3, borderRadius: 2, boxShadow: 3 }}>
-                    <CardContent>
-                        <Typography variant="h5" component="div">
-                            {ticket.title}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            {ticket.description}
-                        </Typography>
-                    </CardContent>
-                </Card>
-            ))}
-        </Container>
+        <Box sx={{ flexGrow: 1 }}>
+            {/* AppBar only shows after user logs in */}
+            <AppBar position="static">
+                <Toolbar>
+                    <Typography variant="h6" sx={{ flexGrow: 1 }}>
+                        Ticketing Portal
+                    </Typography>
+                    <Button color="inherit" onClick={handleLogout}>
+                        Logout
+                    </Button>
+                </Toolbar>
+            </AppBar>
+
+
+            {/* Create Ticket Button */}
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2, mr: 2 }}>
+                <Button 
+                    variant="contained" 
+                    color="primary" 
+                    onClick={handleCreateTicket}
+                    sx={{ position: 'absolute', top: 80, right: 20 }}  // Position button at the top-right below the AppBar
+                >
+                    Create Ticket
+                </Button>
+            </Box>
+
+            {/* Tickets Display */}
+            <Container maxWidth="md" sx={{ mt: 5 }}>
+                <Typography variant="h4" component="h1" gutterBottom align="center" sx={{ mb: 3 }}>
+                    Tickets for {username}
+                </Typography>
+                {tickets.length > 0 ? (
+                    tickets.map(ticket => (
+                        <Card key={ticket.id} sx={{ mb: 3, borderRadius: 2, boxShadow: 3 }}>
+                            <CardContent>
+                                {/* Display subject */}
+                                <Typography variant="h5" component="div">
+                                    {ticket.subject}
+                                </Typography>
+
+                                {/* Display status */}
+                                <Typography variant="body2" color="text.primary">
+                                    <strong>Status:</strong> {ticket.status}
+                                </Typography>
+
+                                {/* Display severity */}
+                                <Typography variant="body2" color="text.primary">
+                                    <strong>Severity:</strong> {ticket.severity}
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    ))
+                ) : (
+                    <Typography variant="body1" align="center">
+                        No tickets found for {username}.
+                    </Typography>
+                )}
+            </Container>
+        </Box>
     );
 };
 

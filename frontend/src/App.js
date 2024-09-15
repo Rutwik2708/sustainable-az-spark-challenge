@@ -3,14 +3,24 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Login from './components/Login';
 import Signup from './components/Signup';
 import TicketList from './components/TicketList';
+import AddTicket from './components/AddTicket';
+import Logout from './components/Logout';
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-    const handleLoginSuccess = (username) => {
+    const handleLoginSuccess = (username, password) => {
         setIsAuthenticated(true);
         setUsername(username);
+        setPassword(password);
+    };
+
+    const handleLogout = () => {
+        setIsAuthenticated(false);
+        setUsername('');
+        setPassword('');
     };
 
     return (
@@ -20,8 +30,14 @@ const App = () => {
                 <Route path="/signup" element={<Signup />} />
                 <Route 
                     path="/tickets" 
-                    element={isAuthenticated ? <TicketList username={username} /> : <Navigate to="/" />} 
+                    element={isAuthenticated ? <TicketList username={username} password = {password} onLogoutSuceess={handleLogout} /> : <Navigate to="/" />} 
                 />
+                <Route
+                    path="/create-ticket"
+                    element={isAuthenticated ? <AddTicket username={username} password={password}/> : <Navigate to="/" />} 
+                />
+                <Route path="/logout"
+                element={<Logout onLogoutSuceess={handleLogout}/>} />
             </Routes>
         </Router>
     );

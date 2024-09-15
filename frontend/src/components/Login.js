@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { Card, CardContent, Typography, TextField, Button, Alert, Box, Container, Link } from '@mui/material';
 import Userservice from '../services/UserService';
 
@@ -20,7 +19,7 @@ const Login = ({ onLoginSuccess }) => {
             });
 
             if (response.status === 200) {
-                onLoginSuccess(username); // Pass the username to the parent component
+                onLoginSuccess(username, password); // Pass the username to the parent component
                 setMessage('Login successful!');
                 if (response.data === 'Mining Corporation') {
 

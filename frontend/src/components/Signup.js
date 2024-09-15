@@ -20,7 +20,7 @@ const Signup = () => {
                     name,
                     email,
                     password,
-                    role: userType,  // Add userType to the signup request
+                    userType,  // Add userType to the signup request
                 });
                 setMessage('Account created successfully!');
                 
