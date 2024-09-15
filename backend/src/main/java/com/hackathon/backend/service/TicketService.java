@@ -18,11 +18,11 @@ public class TicketService {
     @Autowired
     private Utilities util;
 
-    public Ticket createTicket(String status, String severity, String subject, String username, String media) {
+    public Ticket createTicket(String status, String severity, String subject, String username, String media, String description,   String pollutionCategory) {
         // Assuming util.getCurrDate() returns the current date as String
         String currentDate = util.getCurrDate();
 
-        Ticket ticket = new Ticket(status, currentDate, severity, subject, username, media, "", "");
+        Ticket ticket = new Ticket(status, currentDate, severity, subject, username, media, description, pollutionCategory);
 
         return ticketRepository.save(ticket);
     }

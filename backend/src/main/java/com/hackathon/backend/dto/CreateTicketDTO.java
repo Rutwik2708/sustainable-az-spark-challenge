@@ -11,6 +11,9 @@ public class CreateTicketDTO {
 
     private String dateCreated;
 
+    private String description;
+    private String pollutionCategory;
+
     private String severity;
 
     private String subject;

@@ -25,7 +25,9 @@ public class TicketController {
                 ticketDTO.getSeverity(),
                 ticketDTO.getSubject(),
                 ticketDTO.getUsername(),
-                ticketDTO.getMedia()
+                ticketDTO.getMedia(),
+                ticketDTO.getDescription(),
+                ticketDTO.getPollutionCategory()
         );
         return ResponseEntity.ok(createdTicket);
     }
