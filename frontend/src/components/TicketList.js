@@ -33,6 +33,10 @@ const TicketList = ({ username, password }) => {
         navigate('/logout')
     };
 
+    const handleTicketClick = (ticketId) => {
+        navigate(`/ticket/${ticketId}`);
+    };
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             {/* AppBar only shows after user logs in */}
@@ -67,7 +71,7 @@ const TicketList = ({ username, password }) => {
                 </Typography>
                 {tickets.length > 0 ? (
                     tickets.map(ticket => (
-                        <Card key={ticket.id} sx={{ mb: 3, borderRadius: 2, boxShadow: 3 }}>
+                        <Card key={ticket.id} sx={{ mb: 3, borderRadius: 2, boxShadow: 3 }} onClick={() => {handleTicketClick(ticket.id)}}>
                             <CardContent>
                                 {/* Display subject */}
                                 <Typography variant="h5" component="div">

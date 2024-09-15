@@ -5,22 +5,26 @@ import Signup from './components/Signup';
 import TicketList from './components/TicketList';
 import AddTicket from './components/AddTicket';
 import Logout from './components/Logout';
+import TicketDetail from './components/TicketDetail';
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [userType, setUserType] = useState('');
 
-    const handleLoginSuccess = (username, password) => {
+    const handleLoginSuccess = (username, password, userType) => {
         setIsAuthenticated(true);
         setUsername(username);
         setPassword(password);
+        setUserType(userType);
     };
 
     const handleLogout = () => {
         setIsAuthenticated(false);
         setUsername('');
         setPassword('');
+        setUserType('');
     };
 
     return (
@@ -36,8 +40,8 @@ const App = () => {
                     path="/create-ticket"
                     element={isAuthenticated ? <AddTicket username={username} password={password}/> : <Navigate to="/" />} 
                 />
-                <Route path="/logout"
-                element={<Logout onLogoutSuceess={handleLogout}/>} />
+                <Route path="/logout" element={<Logout onLogoutSuceess={handleLogout}/>} />
+                <Route path="ticket/:ticketId" element={<TicketDetail username={username} password={password} userType={userType}/>} />
             </Routes>
         </Router>
     );

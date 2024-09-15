@@ -15,11 +15,75 @@ const TicketService = {
             };
 
             const response = await axios.request(config);
-
-
             return response.data;
         } catch (error) {
             console.error('Error fetching tickets:', error);
+            throw error;
+        }
+    },
+
+    async createTicketMessage(ticketId, message, username, password, media, userType) {
+        try {
+            const payload = {
+                "description": message,
+                "username": username,
+                "ticketId": ticketId,
+                "media": media,
+                "userType": userType
+            };
+
+            const config = {
+                method: 'post',
+                url: `${API_BASE_URL}/api/ticket-messages/create`,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Basic ${btoa(`${username}:${password}`)}`
+                },
+                data: JSON.stringify(payload)
+            };
+
+            const response = await axios.request(config);
+            return response.data;
+        } catch (error) {
+            console.error('Error creating ticket message:', error);
+            throw error;
+        }
+    },
+
+    async getTicketMessages(ticketId, username, password) {
+        try {
+            const config = {
+                method: 'get',
+                url: `${API_BASE_URL}/api/ticket-messages/ticket/${ticketId}`,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Basic ${btoa(`${username}:${password}`)}`
+                }
+            };
+
+            const response = await axios.request(config);
+            return response.data;
+        } catch (error) {
+            console.error('Error fetching ticket:', error);
+            throw error;
+        }
+    },
+
+    async getTicketById(ticketId, username, password) {
+        try {
+            const config = {
+                method: 'get',
+                url: `${API_BASE_URL}/api/tickets/${ticketId}`,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Basic ${btoa(`${username}:${password}`)}`
+                }
+            };
+
+            const response = await axios.request(config);
+            return response.data;
+        } catch (error) {
+            console.error('Error fetching ticket:', error);
             throw error;
         }
     },
