@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { Card, CardContent, Typography, TextField, Button, Alert, Box, Container, Link } from '@mui/material';
 import Userservice from '../services/UserService';
 
@@ -8,6 +7,7 @@ const Login = ({ onLoginSuccess }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    const [userType, setUserType] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -20,11 +20,11 @@ const Login = ({ onLoginSuccess }) => {
             });
 
             if (response.status === 200) {
-                onLoginSuccess(username); // Pass the username to the parent component
+                onLoginSuccess(username, password, response.data.usertype); // Pass the username to the parent component
                 setMessage('Login successful!');
-                if (response.data === 'Mining Corporation') {
-
-                } else if (response.data === 'Govt Authorities') {
+                if (response.data.usertype === 'Mining Corporation') {
+                    //naigate()
+                } else if (response.data.usertype === 'Govt Authorities') {
 
                 } else {
                     navigate('/tickets');

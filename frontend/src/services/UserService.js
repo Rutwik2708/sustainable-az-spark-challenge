@@ -1,16 +1,16 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://ec2-54-90-131-236.compute-1.amazonaws.com:8080';
+const API_BASE_URL = 'http://ec2-54-201-132-207.us-west-2.compute.amazonaws.com:8080';
 
 const UserService = {
     async signUp({ name, email, password, userType }) {
         try {
             // Prepare the request body with user data
             const userData = {
-                name,
-                email,
-                password,
-                userType,  // Include userType in the request
+                "name": name,
+                "username": email,
+                "password": password,
+                "usertype": userType
             };
     
             // Define Axios configuration with headers
@@ -38,7 +38,7 @@ const UserService = {
             // Define Axios configuration with headers
             const config = {
                 method: 'get', // Adjust to POST or GET based on your backend API
-                url: `${API_BASE_URL}/login`, // Endpoint for login
+                url: `${API_BASE_URL}/authenticate`, // Endpoint for login
                 headers: { 
                     'Content-Type': 'application/json', 
                     'Authorization': `Basic ${encodedCredentials}`,  // Set Basic Auth header
@@ -49,12 +49,10 @@ const UserService = {
             const response = await axios.request(config);
 
             // Return the response to the component
-            // return response;
-
-            return {data : 'User', status : 200};
+            return response;
         } catch (error) {
             console.error('Login error:', error);
-            throw error; // Rethrow the error so it can be handled in the component
+            throw error;
         }
     }
 };
