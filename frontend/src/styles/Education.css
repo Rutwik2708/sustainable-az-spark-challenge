@@ -1,0 +1,50 @@
+.education-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates two columns */
+  grid-gap: 20px; /* Adds space between the tiles */
+}
+
+.education-tile {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.sdg-logo {
+  width: 40px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.sdg-tile ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sdg-tile li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sdg-tile img {
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .education-grid {
+    grid-template-columns: 1fr; /* Single column layout on smaller screens */
+  }
+}
