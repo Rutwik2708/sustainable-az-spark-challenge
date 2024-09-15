@@ -16,6 +16,9 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private CsvDataLoader csvDataLoader;
+
     @Override
     public void run(String... args) throws Exception {
         // Check if the user already exists to avoid duplications
@@ -27,8 +30,11 @@ public class DataLoader implements CommandLineRunner {
                     "ADMIN",                  // default role,
                     "Admin User"
             );
+
             userRepository.save(defaultUser);
         }
+        // Load data from CSV
+        csvDataLoader.loadCsvData();
     }
 }
 

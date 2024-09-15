@@ -22,7 +22,7 @@ public class TicketService {
         // Assuming util.getCurrDate() returns the current date as String
         String currentDate = util.getCurrDate();
 
-        Ticket ticket = new Ticket(status, currentDate, severity, subject, username, media);
+        Ticket ticket = new Ticket(status, currentDate, severity, subject, username, media, "", "");
 
         return ticketRepository.save(ticket);
     }

@@ -22,6 +22,10 @@ public class Ticket {
 
     private String severity;
 
+    private String description;
+
+    private String pollutionCategory;
+
     private String subject;
 
     private String username;
@@ -31,13 +35,16 @@ public class Ticket {
     public Ticket() {
     }
 
-    public Ticket(String status, String dateCreated, String severity, String subject, String username, String media) {
+    public Ticket(String status, String dateCreated, String severity, String subject, String username, String media
+    , String description, String pollutionCategory) {
         this.status = status;
         this.dateCreated = dateCreated;
         this.severity = severity;
         this.subject = subject;
         this.username = username;
         this.media = media;
+        this.description = description;
+        this.pollutionCategory = pollutionCategory;
     }
 
 }
