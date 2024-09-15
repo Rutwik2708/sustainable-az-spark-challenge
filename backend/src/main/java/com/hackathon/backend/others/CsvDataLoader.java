@@ -25,7 +25,7 @@ public class CsvDataLoader {
 
     @Transactional
     public void loadCsvData() throws IOException {
-        String filePath = Paths.get("classes/data.csv").toString();
+        String filePath = Paths.get("target/classes/data.csv").toString();
         try (FileReader reader = new FileReader(filePath);
              CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
 
