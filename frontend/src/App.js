@@ -7,6 +7,7 @@ import Education from './components/Education';
 import AddTicket from './components/AddTicket';
 import Logout from './components/Logout';
 import TicketDetail from './components/TicketDetail';
+import AllTickets from './components/AllTickets';
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -36,6 +37,10 @@ const App = () => {
                 <Route 
                     path="/tickets" 
                     element={isAuthenticated ? <TicketList username={username} password = {password} onLogoutSuceess={handleLogout} /> : <Navigate to="/" />} 
+                />
+                <Route 
+                    path="/ticketsgmview" 
+                    element={isAuthenticated ? <AllTickets username={username} password = {password} onLogoutSuceess={handleLogout} /> : <Navigate to="/" />} 
                 />
                  <Route path="/education" element={<Education />} />
                     

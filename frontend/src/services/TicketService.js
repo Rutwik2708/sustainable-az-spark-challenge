@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://ec2-54-201-132-207.us-west-2.compute.amazonaws.com:8080';
+// const API_BASE_URL = 'http://ec2-54-201-132-207.us-west-2.compute.amazonaws.com:8080';
+const API_BASE_URL = 'http://localhost:8080';
 
 const TicketService = {
     async getTicketsByUsername(username, password) {
@@ -158,7 +159,27 @@ const TicketService = {
             console.error('Error closing ticket:', error);
             throw error;
         }
-    }
+    },
+
+    async getAllTickets(username, password) {
+        try {
+            const config = {
+                method: 'get',
+                url: `${API_BASE_URL}/api/tickets`,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Basic ${btoa(`${username}:${password}`)}`
+                }
+            };
+
+            const response = await axios.request(config);
+            return response.data;
+        } catch (error) {
+            console.error('Error fetching tickets: ', error);
+            throw error;
+        }
+    },
+
 };
 
 export default TicketService;

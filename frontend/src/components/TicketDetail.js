@@ -147,7 +147,7 @@ const TicketDetail = ({ username, password, userType }) => {
                                         >
                                             <ListItemText
                                                 primary={message.description}
-                                                secondary={message.user}
+                                                secondary = {message.userType == 'User' ? "User": message.username }
                                                 sx={{ wordWrap: 'break-word' }}
                                             />
                                         </ListItem>

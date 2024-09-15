@@ -24,7 +24,9 @@ const Login = ({ onLoginSuccess }) => {
                 setMessage('Login successful!');
                 if (response.data.usertype === 'Mining Corporation') {
                     //naigate()
+                    navigate('ticketsgmview');
                 } else if (response.data.usertype === 'Govt Authorities') {
+                    navigate('ticketsgmview');
 
                 } else {
                     navigate('/tickets');

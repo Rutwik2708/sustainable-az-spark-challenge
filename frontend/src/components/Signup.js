@@ -27,9 +27,11 @@ const Signup = () => {
                 // Result has the usertype, based on that we want to redircet to the respective page
                 if (userType === 'Mining Corporation') {
                     // Redirect to Mining Corporation ticket resolving page
+                    navigate('/');
 
                 } else if (userType === 'Govt Authorities') {
                     // Redirect to Govt Authorities monitoring page
+                    navigate('/');
 
                 } else {
                     navigate('/tickets'); // Redirect to tickets page
