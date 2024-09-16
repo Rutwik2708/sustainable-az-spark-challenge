@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, Typography, TextField, Button, Alert, Box, Container, Link, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material';
-import UserService from '../services/UserService'; // Adjust path as needed
+import UserService from '../services/UserService'; 
+import Header from './Header'; 
 
 const Signup = () => {
     const [name, setName] = useState('');
@@ -118,7 +119,7 @@ const Signup = () => {
                             sx={{ mb: 2 }}
                         />
                         <TextField
-                            label="Email Address"
+                            label="Username"
                             variant="outlined"
                             fullWidth
                             value={email}
@@ -140,6 +141,8 @@ const Signup = () => {
     };
 
     return (
+        <Box sx={{ flexGrow: 1 }}>
+            <Header/>
         <Container maxWidth="sm">
             <Card sx={{ mt: 5, p: 3, borderRadius: 2, boxShadow: 3 }}>
                 <CardContent>
@@ -161,7 +164,7 @@ const Signup = () => {
                             value={userType}
                             onChange={(e) => setUserType(e.target.value)}
                         >
-                            <FormControlLabel value="User" control={<Radio />} label="User" />
+                            <FormControlLabel value="User" control={<Radio />} label="Public User" />
                             <FormControlLabel value="Mining Corporation" control={<Radio />} label="Mining Corporation" />
                             <FormControlLabel value="Govt Authorities" control={<Radio />} label="Govt Authorities" />
                         </RadioGroup>
@@ -184,6 +187,7 @@ const Signup = () => {
                 </CardContent>
             </Card>
         </Container>
+        </Box>
     );
 };
 

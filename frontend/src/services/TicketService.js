@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const API_BASE_URL = 'http://ec2-54-201-132-207.us-west-2.compute.amazonaws.com:8080';
-const API_BASE_URL = 'http://localhost:8080';
+const API_BASE_URL = 'http://ec2-18-216-120-4.us-east-2.compute.amazonaws.com:8080';
+// const API_BASE_URL = 'http://localhost:8080';
 
 const TicketService = {
     async getTicketsByUsername(username, password) {

@@ -1,9 +1,13 @@
 import React from 'react';
 import '../styles/Education.css';
 import { FaHandsHelping, FaGavel, FaBuilding, FaGlobe } from 'react-icons/fa';
+import { Box } from '@mui/material';
+import Header from './Header';
 
 const Education = () => {
   return (
+    <Box sx={{ flexGrow: 1 }}>
+      <Header/>
     <div className="education-container">
       <h1>Mining Issues and Rights in Arizona</h1>
 
@@ -88,6 +92,7 @@ const Education = () => {
 
       </div>
     </div>
+    </Box>
   );
 }
 

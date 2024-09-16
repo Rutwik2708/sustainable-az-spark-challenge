@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, Typography, TextField, Button, Alert, Box, Container, Link } from '@mui/material';
 import Userservice from '../services/UserService';
+import Header from './Header';
 
 const Login = ({ onLoginSuccess }) => {
     const [username, setUsername] = useState('');
@@ -24,9 +25,9 @@ const Login = ({ onLoginSuccess }) => {
                 setMessage('Login successful!');
                 if (response.data.usertype === 'Mining Corporation') {
                     //naigate()
-                    navigate('ticketsgmview');
+                    navigate('/home');
                 } else if (response.data.usertype === 'Govt Authorities') {
-                    navigate('ticketsgmview');
+                    navigate('/home');
 
                 } else {
                     navigate('/tickets');
@@ -38,7 +39,10 @@ const Login = ({ onLoginSuccess }) => {
     };
 
     return (
+        <Box sx={{ flexGrow: 1 }}>
+            <Header/>
         <Container maxWidth="sm">
+            
             <Card sx={{ mt: 5, p: 3, borderRadius: 2, boxShadow: 3 }}>
                 <CardContent>
                     <Typography variant="h4" component="h1" gutterBottom align="center">
@@ -53,7 +57,7 @@ const Login = ({ onLoginSuccess }) => {
 
                     <Box component="form" onSubmit={handleSubmit}>
                         <TextField
-                            label="Email Address"
+                            label="Username"
                             variant="outlined"
                             fullWidth
                             value={username}
@@ -84,6 +88,7 @@ const Login = ({ onLoginSuccess }) => {
                 </CardContent>
             </Card>
         </Container>
+        </Box>
     );
 };
 

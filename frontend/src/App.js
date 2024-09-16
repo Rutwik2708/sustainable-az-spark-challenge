@@ -8,18 +8,29 @@ import AddTicket from './components/AddTicket';
 import Logout from './components/Logout';
 import TicketDetail from './components/TicketDetail';
 import AllTickets from './components/AllTickets';
+import Home from './components/home';
+import TicketListCategory from './components/TicketListCategory';
 
 const App = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [userType, setUserType] = useState('');
+    // Initialize state from localStorage
+    const [isAuthenticated, setIsAuthenticated] = useState(() => {
+        return localStorage.getItem('username') && localStorage.getItem('password') && localStorage.getItem('userType');
+    });
+
+    const [username, setUsername] = useState(localStorage.getItem('username') || '');
+    const [password, setPassword] = useState(localStorage.getItem('password') || '');
+    const [userType, setUserType] = useState(localStorage.getItem('userType') || '');
 
     const handleLoginSuccess = (username, password, userType) => {
         setIsAuthenticated(true);
         setUsername(username);
         setPassword(password);
         setUserType(userType);
+
+        // Store login details in localStorage
+        localStorage.setItem('username', username);
+        localStorage.setItem('password', password);
+        localStorage.setItem('userType', userType);
     };
 
     const handleLogout = () => {
@@ -27,6 +38,11 @@ const App = () => {
         setUsername('');
         setPassword('');
         setUserType('');
+
+        // Clear localStorage on logout
+        localStorage.removeItem('username');
+        localStorage.removeItem('password');
+        localStorage.removeItem('userType');
     };
 
     return (
@@ -42,6 +58,10 @@ const App = () => {
                     path="/ticketsgmview" 
                     element={isAuthenticated ? <AllTickets username={username} password = {password} onLogoutSuceess={handleLogout} /> : <Navigate to="/" />} 
                 />
+                 <Route 
+                    path="/home" 
+                    element={isAuthenticated ? <Home username={username} password = {password} onLogoutSuceess={handleLogout} /> : <Navigate to="/" />} 
+                />
                  <Route path="/education" element={<Education />} />
                     
                 <Route
@@ -50,6 +70,7 @@ const App = () => {
                 />
                 <Route path="/logout" element={<Logout onLogoutSuceess={handleLogout}/>} />
                 <Route path="ticket/:ticketId" element={<TicketDetail username={username} password={password} userType={userType}/>} />
+                <Route path="ticketsbycategory/:category" element={<TicketListCategory username={username} password={password} />} />
             </Routes>
         </Router>
     );

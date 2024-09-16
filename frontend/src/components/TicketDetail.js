@@ -3,6 +3,7 @@ import { AppBar, Toolbar, Box, Typography, Container, TextField, Button, Paper, 
 import { useParams } from 'react-router-dom';
 import TicketService from '../services/TicketService';
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
 
 const TicketDetail = ({ username, password, userType }) => {
     const { ticketId } = useParams();
@@ -73,16 +74,7 @@ const TicketDetail = ({ username, password, userType }) => {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
-                <Toolbar>
-                    <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                        Ticketing Portal
-                    </Typography>
-                    <Button color="inherit" onClick={handleLogout}>
-                        Logout
-                    </Button>
-                </Toolbar>
-            </AppBar>
+            <Header/>
 
             <Container maxWidth="md" sx={{ mt: 5 }}>
                 {ticket ? (

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Card, CardContent, Typography, Box, Container, AppBar, Toolbar, Button } from '@mui/material';
 import TicketService from '../services/TicketService';
 import { useNavigate } from 'react-router-dom';
+import ForceDirectedGraph from './ForceDirectedGraph';
+import Header from './Header';
 
 const AllTickets = ({ username, password }) => {
     const [tickets, setTickets] = useState([]);
@@ -40,18 +42,10 @@ const AllTickets = ({ username, password }) => {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            {/* AppBar only shows after user logs in */}
-            <AppBar position="static">
-                <Toolbar>
-                    <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                        Ticketing Portal
-                    </Typography>
-                    <Button color="inherit" onClick={handleLogout}>
-                        Logout
-                    </Button>
-                </Toolbar>
-            </AppBar>
+       
+            <Header/>
 
+         
 
             {/* Create Ticket Button */}
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2, mr: 2 }}>
@@ -64,6 +58,8 @@ const AllTickets = ({ username, password }) => {
                     Create Ticket
                 </Button>
             </Box>
+
+            <ForceDirectedGraph />
 
             {/* Tickets Display */}
             <Container maxWidth="md" sx={{ mt: 5 }}>

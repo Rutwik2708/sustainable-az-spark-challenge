@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { TextField, Button, Container, Card, CardContent, Typography, Box, MenuItem } from '@mui/material';
 import { AppBar, Toolbar } from '@mui/material';
 import TicketService from '../services/TicketService';
+import Header from './Header';
 
 const AddTicket = ({ username, password }) => {
     const [ticket, setTicket] = useState({
@@ -48,16 +49,7 @@ const AddTicket = ({ username, password }) => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             {/* AppBar only shows after user logs in */}
-            <AppBar position="static">
-                <Toolbar>
-                    <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                        Ticketing Portal
-                    </Typography>
-                    <Typography variant="body1" sx={{ mr: 2 }}>
-                        Welcome, {username}
-                    </Typography>
-                </Toolbar>
-            </AppBar>
+            <Header/>
 
             <Container maxWidth="sm">
                 <Card sx={{ mt: 5, p: 3, borderRadius: 2, boxShadow: 3 }}>

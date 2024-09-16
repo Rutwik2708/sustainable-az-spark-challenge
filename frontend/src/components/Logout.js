@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { Typography, Box, Button } from '@mui/material';
 import { useNavigate, Link } from 'react-router-dom';
+import Header from './Header';
+import Container from '@mui/material/Container';
+import Card from '@mui/material/Card';
 
 const Logout = ({ onLogoutSuceess }) => {
     const navigate = useNavigate();
@@ -11,7 +14,10 @@ const Logout = ({ onLogoutSuceess }) => {
     }, []);
 
     return (
-        <Box sx={{ textAlign: 'center', mt: 5 }}>
+        <Box sx={{ flexGrow: 1  }}>
+            <Header/>
+            <Container maxWidth="sm">
+            <Card sx={{ mt: 5, p: 3, borderRadius: 2, boxShadow: 3 }}>
             <Typography variant="h4" gutterBottom>
                 You've successfully logged out.
             </Typography>
@@ -21,6 +27,8 @@ const Logout = ({ onLogoutSuceess }) => {
             <Button variant="contained" color="primary" component={Link} to="/">
                 Go to Login Page
             </Button>
+            </Card>
+            </Container>
         </Box>
     );
 };
