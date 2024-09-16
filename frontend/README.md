@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+# Voices Unheard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a web application with a React frontend and a Spring Boot backend, both containerized using Docker.
 
-## Available Scripts
+## Project Structure
 
-In the project directory, you can run:
+- `frontend/` - Contains the React frontend application.
+- `backend/` - Contains the Spring Boot backend application.
+- `Dockerfile` - Located in the root directory, used to build the Docker image for the backend.
+- `frontend/Dockerfile` - Dockerfile for building the frontend Docker image.
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Make sure you have Docker installed on your machine. You can download and install Docker from [here](https://www.docker.com/get-started).
 
-### `npm test`
+### Configuration
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Before starting the application, you need to configure a few settings:
 
-### `npm run build`
+1. **API Base URL for Frontend**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   - In the React frontend, update the `API_BASE_URL` in `TicketService.js` and `UserService.js` to point to your backend API endpoint.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   Example:
+   ```js
+   const API_BASE_URL = 'http://localhost:8080'; // Replace with your backend URL
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Cohere API Key for Backend**
 
-### `npm run eject`
+   - In the Spring Boot backend, add your Co-Here API key in `CohereService.java`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   Example:
+   ```java
+   Cohere.builder().token("your-cohere-api-key").build(); // Replace with your Co-Here API key
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Running the Application
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. **Build and Run Backend**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   - Navigate to the root directory where the `Dockerfile` for the backend is located.
+   - Build the Docker image and run the container:
+     ```bash
+     docker build -t backend-image .
+     docker run -d -p 8080:8080 backend-image
+     ```
 
-## Learn More
+2. **Build and Run Frontend**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   - Navigate to the `frontend` directory where the `Dockerfile` for the frontend is located.
+   - Build the Docker image and run the container:
+     ```bash
+     docker build -t frontend-image .
+     docker run -d -p 3000:3000 frontend-image
+     ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Usage
 
-### Code Splitting
+1. **Create an Account**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   - Open your browser and navigate to `http://localhost:3000`.
+   - Click on the **Sign Up** button to create a new user account.
 
-### Analyzing the Bundle Size
+2. **Log In**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   - After creating an account, you can log in using the credentials you provided during signup.
 
-### Making a Progressive Web App
+3. **Start Using the Application**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   - Once logged in, you can start using the application features.
 
-### Advanced Configuration
+## Troubleshooting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- If you encounter issues, ensure that the API Base URL is correctly set and that your Co-Here API key is valid.
+- Check the Docker container logs for errors:
+  ```bash
+  docker logs <container-id>
+  ```
 
-### Deployment
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Feel free to fork this repository and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
 
-### `npm run build` fails to minify
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the [MIT License](LICENSE).
+
+## Contact
+
+For any questions, please reach out to [Rushabh Jaiswal](mailto:rjaisw15@asu.edu), [Ashish Wale](mailto:awale1@asu.edu) and [Rutwik Chaudhari](mailto:rchaud32@asu.edu).
