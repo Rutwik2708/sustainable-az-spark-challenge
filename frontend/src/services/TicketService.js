@@ -96,6 +96,7 @@ const TicketService = {
                 "severity": ticketData.severity,
                 "subject": ticketData.subject,
                 "username": ticketData.username,
+                "description": ticketData.description,
                 "media": ticketData.media
             };
 
