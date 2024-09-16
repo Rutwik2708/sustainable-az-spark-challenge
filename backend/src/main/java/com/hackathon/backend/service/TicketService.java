@@ -22,7 +22,10 @@ public class TicketService {
         // Assuming util.getCurrDate() returns the current date as String
         String currentDate = util.getCurrDate();
 
-        Ticket ticket = new Ticket(status, currentDate, severity, subject, username, media, description, pollutionCategory);
+        String[] parts = CohereService.getResponse(description);
+
+
+        Ticket ticket = new Ticket(status, currentDate, parts[1], subject, username, media, description, parts[0]);
 
         return ticketRepository.save(ticket);
     }
