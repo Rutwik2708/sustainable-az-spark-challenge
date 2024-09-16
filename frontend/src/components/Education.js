@@ -68,22 +68,22 @@ const Education = () => {
   <p>Mining has a wide-reaching impact on the world, especially in relation to the UN's Sustainable Development Goals (SDGs). Here are some of the key SDGs impacted by mining activities:</p>
   <ul>
     <li>
-      <img src="https://sdgs.un.org/sites/default/files/styles/sdg_logo_large/public/2020-09/E_SDG_Icons-06.jpg" alt="SDG 6 Logo" className="sdg-logo" />
+      {/* <img src="https://sdgs.un.org/sites/default/files/styles/sdg_logo_large/public/2020-09/E_SDG_Icons-06.jpg" alt="SDG 6 Logo" className="sdg-logo" /> */}
       <strong>SDG 6: Clean Water and Sanitation</strong> <br />
       Mining can affect water resources through contamination or overuse, jeopardizing access to clean water. <a href="https://www.un.org/sustainabledevelopment/water-and-sanitation/" target="_blank" rel="noopener noreferrer">Learn more</a>
     </li>
     <li>
-      <img src="https://sdgs.un.org/sites/default/files/styles/sdg_logo_large/public/2020-09/E_SDG_Icons-08.jpg" alt="SDG 8 Logo" className="sdg-logo" />
+      {/* <img src="https://sdgs.un.org/sites/default/files/styles/sdg_logo_large/public/2020-09/E_SDG_Icons-08.jpg" alt="SDG 8 Logo" className="sdg-logo" /> */}
       <strong>SDG 8: Decent Work and Economic Growth</strong> <br />
       Mining can contribute to local economies, but it must ensure fair labor practices and safe working conditions. <a href="https://www.un.org/sustainabledevelopment/economic-growth/" target="_blank" rel="noopener noreferrer">Learn more</a>
     </li>
     <li>
-      <img src="https://sdgs.un.org/sites/default/files/styles/sdg_logo_large/public/2020-09/E_SDG_Icons-13.jpg" alt="SDG 13 Logo" className="sdg-logo" />
+      {/* <img src="https://sdgs.un.org/sites/default/files/styles/sdg_logo_large/public/2020-09/E_SDG_Icons-13.jpg" alt="SDG 13 Logo" className="sdg-logo" /> */}
       <strong>SDG 13: Climate Action</strong> <br />
       Mining operations contribute to carbon emissions, making climate action critical in mitigating these effects. <a href="https://www.un.org/sustainabledevelopment/climate-change/" target="_blank" rel="noopener noreferrer">Learn more</a>
     </li>
     <li>
-      <img src="https://sdgs.un.org/sites/default/files/styles/sdg_logo_large/public/2020-09/E_SDG_Icons-15.jpg" alt="SDG 15 Logo" className="sdg-logo" />
+      {/* <img src="https://sdgs.un.org/sites/default/files/styles/sdg_logo_large/public/2020-09/E_SDG_Icons-15.jpg" alt="SDG 15 Logo" className="sdg-logo" /> */}
       <strong>SDG 15: Life on Land</strong> <br />
       Mining impacts ecosystems and biodiversity, which makes it crucial to protect habitats from its consequences. <a href="https://www.un.org/sustainabledevelopment/biodiversity/" target="_blank" rel="noopener noreferrer">Learn more</a>
     </li>

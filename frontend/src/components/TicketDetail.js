@@ -68,6 +68,9 @@ const TicketDetail = ({ username, password, userType }) => {
         }
     };
 
+    const handleUpdateTicket = () => {
+    };
+
     const isMessageFromUser = (messageUserType) => {
         return messageUserType === 'User';
     };
@@ -75,6 +78,28 @@ const TicketDetail = ({ username, password, userType }) => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Header/>
+
+            {/* Buttons Container */}
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2, mr: 2, gap: 2 }}> {/* Added gap for spacing */}
+        {/* Update Ticket Button */}
+        <Button 
+            variant="contained" 
+            color="primary" 
+            onClick={handleUpdateTicket}
+        >
+            Update Ticket
+        </Button>
+
+        {/* Conditional Button based on userType */}
+        <Button 
+            variant="contained" 
+            color="primary" 
+            onClick={handleUpdateTicket}
+        >
+            {userType === 'User' ? 'Accept Resolution' : 'Resolve Ticket'}
+        </Button>
+        </Box>
+
 
             <Container maxWidth="md" sx={{ mt: 5 }}>
                 {ticket ? (
