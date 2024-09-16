@@ -1,0 +1,67 @@
+.education-container {
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 100%; /* Full width */
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #004d40;
+  margin-bottom: 30px;
+}
+
+/* Grid layout for tiles */
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+  gap: 20px;
+  padding: 10px;
+}
+
+/* Tile style */
+.education-tile {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.education-tile:hover {
+  transform: scale(1.05); /* Hover effect */
+}
+
+.icon {
+  font-size: 3rem;
+  color: #004d40;
+}
+
+h2 {
+  font-size: 1.8rem;
+  color: #004d40;
+}
+
+p, ul {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+a {
+  color: #00695c;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
