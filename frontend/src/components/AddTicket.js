@@ -89,20 +89,6 @@ const AddTicket = ({ username, password }) => {
                                 <MenuItem value="In Progress">In Progress</MenuItem>
                                 <MenuItem value="Resolved">Resolved</MenuItem>
                             </TextField>
-                            <TextField
-                                label="Severity"
-                                name="severity"
-                                value={ticket.severity}
-                                onChange={handleChange}
-                                fullWidth
-                                select
-                                sx={{ mb: 2 }}
-                            >
-                                <MenuItem value="Low">Low</MenuItem>
-                                <MenuItem value="Medium">Medium</MenuItem>
-                                <MenuItem value="High">High</MenuItem>
-                            </TextField>
-
                             {/* File input for media (photo/video) */}
                             <Button
                                 variant="contained"
