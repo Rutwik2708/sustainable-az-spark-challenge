@@ -2,10 +2,10 @@
 
 Voices Unheard is an AI-powered platform empowers individuals affected by mining to voice their concerns. This project was built as a part of the Arizona Sustainability Spark Challenge 2024.
 
-# Tech Stack
+## Tech Stack
 AWS: EC2, RDS, Docker, Cohere, React.js, D3.js, Java, SpringBoot
   
-# Useful Links
+## Useful Links
 Hackathon Presentation: https://docs.google.com/presentation/d/17ZaQ4edw_2qOQ53_wCXqIKSnjqI_1bLxSdtzR1BsSo4/edit?usp=sharing
 
 ## Project Structure
