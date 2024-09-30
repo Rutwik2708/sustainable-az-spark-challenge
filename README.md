@@ -1,6 +1,12 @@
 # Voices Unheard
 
-This project is a web application with a React frontend and a Spring Boot backend, both containerized using Docker.
+Voices Unheard is an AI-powered platform empowers individuals affected by mining to voice their concerns. This project was built as a part of the Arizona Sustainability Spark Challenge 2024.
+
+# Tech Stack
+AWS: EC2, RDS, Docker, Cohere, React.js, D3.js, Java, SpringBoot
+  
+# Useful Links
+Hackathon Presentation: https://docs.google.com/presentation/d/17ZaQ4edw_2qOQ53_wCXqIKSnjqI_1bLxSdtzR1BsSo4/edit?usp=sharing
 
 ## Project Structure
 
