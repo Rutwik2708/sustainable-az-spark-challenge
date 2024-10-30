@@ -6,8 +6,8 @@ Voices Unheard is an AI-powered platform empowers individuals affected by mining
 AWS: EC2, RDS, Docker, Cohere, React.js, D3.js, Java, SpringBoot
   
 ## Useful Links
-Hackathon Presentation: https://docs.google.com/presentation/d/17ZaQ4edw_2qOQ53_wCXqIKSnjqI_1bLxSdtzR1BsSo4/edit?usp=sharing
-Demo Video: https://drive.google.com/file/d/1QwyK4k52yzklCRZtTp0RsWwkdfBM7ou2/view?usp=drive_link
+- [Hackathon Presentation](https://docs.google.com/presentation/d/17ZaQ4edw_2qOQ53_wCXqIKSnjqI_1bLxSdtzR1BsSo4/edit?usp=sharing)
+- [Demo Video](https://drive.google.com/file/d/1QwyK4k52yzklCRZtTp0RsWwkdfBM7ou2/view?usp=drive_link)
 
 
 ## Project Structure
